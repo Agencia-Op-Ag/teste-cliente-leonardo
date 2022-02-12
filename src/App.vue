@@ -23,10 +23,31 @@
                     <p class="text-xl mb-4 -ml-4 font-bold">
                       Ative sua conta
                     </p>
-                    <ol class="list-decimal font-light">
-                      <li>Criar conta</li>
-                      <li>Licença</li>
-                      <li>Depositar</li>
+                    <ol class="list-decimal font-light w-2/5">
+                      <li>
+                        <div class="flex justify-between items-center">
+                          <div>Criar conta</div>
+                          <div>
+                            <img src="https://via.placeholder.com/20" alt="">
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="flex justify-between items-center">
+                          <div>Licença</div>
+                          <div>
+                            <img src="https://via.placeholder.com/20" alt="">
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="flex justify-between items-center">
+                          <div>Depositar</div>
+                          <div>
+                            <img src="https://via.placeholder.com/20" alt="">
+                          </div>
+                        </div>
+                      </li>
                     </ol>
                   </div>
                 </div>
@@ -47,10 +68,10 @@
                   </div>
                   <div class="grid grid-cols-1 gap-4">
                     <div>
-                      <input v-model="email" class="outline-none p-4 bg-blue-gray-2 text-white rounded-xl w-full placeholder:text-white" placeholder="E-mail de acesso" type="text">
+                      <input v-model="email" class="outline-none p-4 bg-blue-gray-2 text-white rounded-xl w-full placeholder:text-white" placeholder="E-mail de acesso" type="email">
                     </div>
                     <div>
-                      <input v-model="whatsapp" class="outline-none p-4 bg-blue-gray-2 text-white rounded-xl w-full placeholder:text-white" placeholder="Seu WhatsApp" type="text">
+                      <input v-mask="['(##) #####-####', '(##) ####-####']" v-model="whatsapp" class="outline-none p-4 bg-blue-gray-2 text-white rounded-xl w-full placeholder:text-white" placeholder="Seu WhatsApp" type="text">
                     </div>
                     <div>
                       <input v-model="password" class="outline-none p-4 bg-blue-gray-2 text-white rounded-xl w-full placeholder:text-white" placeholder="Digite uma senha" type="password">
@@ -89,8 +110,12 @@
 
 <script lang="ts">
 import { defineComponent, Ref, ref } from "vue";
+import { mask } from 'vue-the-mask';
 
 export default defineComponent({
+  directives: {
+    mask,
+  },
   setup() {
     const email: Ref<string> = ref('');
     const whatsapp: Ref<string> = ref('');
